@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>857直播 · 轻量导航页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf8f5;
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            color: #2c2b28;
+            line-height: 1.7;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fffffffa;
+            border-radius: 36px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2.8rem;
+        }
+
+        /* 导航区 */
+        .top-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px solid #e9e4dd;
+            margin-bottom: 2.5rem;
+        }
+
+        .brand {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #4a423a;
+        }
+
+        .brand small {
+            font-weight: 300;
+            font-size: 0.85rem;
+            color: #999182;
+            margin-left: 0.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4f4a44;
+            font-size: 0.95rem;
+            font-weight: 450;
+            padding: 0.2rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1f1b17;
+            border-bottom-color: #b8a99c;
+        }
+
+        /* hero 区域 */
+        .hero {
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            color: #2c2722;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #706b64;
+            max-width: 70%;
+            border-left: 3px solid #d6cdc2;
+            padding-left: 1.2rem;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero .sub {
+                max-width: 100%;
+            }
+        }
+
+        /* 核心介绍 */
+        .intro-block {
+            background: #f7f3ee;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.8rem;
+            border: 1px solid #e8e1d9;
+        }
+
+        .intro-block p {
+            font-size: 1.05rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-highlight {
+            background: #ffffffd9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 16px;
+            border-left: 5px solid #b7a18d;
+            font-style: normal;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            margin: 1.2rem 0 0.2rem;
+        }
+
+        /* 三场景卡片 */
+        .scenes-title {
+            font-size: 1.4rem;
+            font-weight: 480;
+            margin-bottom: 1.4rem;
+            color: #3f3832;
+        }
+
+        .scenes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .scene-card {
+            flex: 1 1 200px;
+            background: #fcfaf7;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem 1.6rem;
+            border: 1px solid #e6dfd6;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.15s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #3a332e;
+        }
+
+        .scene-card .icon {
+            font-size: 1.8rem;
+            display: inline-block;
+            margin-bottom: 0.6rem;
+            color: #8b7b6b;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #55504a;
+        }
+
+        /* 提示框 / 引用 */
+        .tip-box {
+            background: #f3efe9;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0 2.5rem;
+            border-left: 6px solid #c5b4a2;
+            font-size: 0.98rem;
+        }
+
+        .tip-box strong {
+            color: #3f352e;
+        }
+
+        .faq-mini {
+            margin-top: 2.5rem;
+            border-top: 1px solid #e5ddd4;
+            padding-top: 1.8rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #3b342f;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #5f5851;
+            padding-left: 1rem;
+            border-left: 2px solid #ddd2c6;
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            font-size: 0.9rem;
+            color: #7c756d;
+            text-align: center;
+            border-top: 1px solid #ece5dd;
+            padding-top: 2rem;
+        }
+
+        a {
+            color: #5f4d3c;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #d4c8bb;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+
+        a:hover {
+            color: #2f251e;
+            text-decoration-color: #9f8b78;
+        }
+
+        .inline-link {
+            font-weight: 450;
+        }
+
+        @media (max-width: 520px) {
+            .page {
+                padding: 1.8rem 1.2rem;
+            }
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .scenes-grid {
+                flex-direction: column;
+            }
+            .intro-block {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 导航 -->
+    <nav class="top-nav">
+        <div class="brand">857<span style="font-weight:300;">·</span>live <small>稳定入口</small></div>
+        <div class="nav-links">
+            <a href="#intro">介绍</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>轻量导航 · 直播入口</h1>
+        <div class="sub">从一个可靠的页面出发，找到日常陪伴的节奏。</div>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="intro-block" id="intro">
+        <p>对于经常观看直播的朋友来说，一个清晰、稳定的访问路径比什么都重要。这个页面就是为了解决这样一个简单需求：不用在多个标签页里翻找，也不必担心临时链接失效。每次需要的时候，从这页出发就好。</p>
+        <p>很多朋友习惯在晚间或休息时打开 <a href="https://portal-index-857.com" class="inline-link">857直播</a>，看一会游戏、闲聊或者音乐现场。与其每次重新搜索，不如把最常用的入口固定下来。这里的导航结构就是为了这个目的——干净，直接，不绕路。</p>
+        <div class="intro-highlight">
+            ⚡ 这个页面本身不承载视频或流媒体，它只是一个起点：把常用的地址整理好，让你每次都能快速回到熟悉的地方。
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <h2 class="scenes-title" id="scenes">🏕️ 日常三种打开方式</h2>
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <div class="icon">🖥️</div>
+            <h3>桌面 · 固定标签</h3>
+            <p>把 857直播 设为浏览器首页或固定标签页，每次开启浏览器就能直接回到直播间。适合用电脑办公或挂机的用户。</p>
+        </div>
+        <div class="scene-card">
+            <div class="icon">📱</div>
+            <h3>移动端 · 快捷方式</h3>
+            <p>在手机浏览器中把页面添加到主屏幕，图标就在桌面上，点开即达。不用每次都输入地址或打开书签。</p>
+        </div>
+        <div class="scene-card">
+            <div class="icon">🔁</div>
+            <h3>分享 · 给朋友</h3>
+            <p>遇到感兴趣的内容，直接把 <a href="https://portal-index-857.com">857直播</a> 这条链接发给朋友。对方打开就是最新状态，省去解释步骤。</p>
+        </div>
+    </div>
+
+    <!-- 提示框 / 引用块 -->
+    <div class="tip-box">
+        <strong>📌 一点说明</strong><br>
+        页面地址不会频繁变动，但如果你发现无法访问，可以先检查网络或稍后重试。直播平台偶尔会有维护或调整，保持耐心就好。这个导航页本身也会持续维护，确保链接有效。如果你有建议或遇到问题，可以通过站点上的联系方式反馈。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini" id="faq">
+        <div class="faq-item">
+            <div class="faq-q">❓ 为什么需要一个单独的导航页？</div>
+            <div class="faq-a">直接使用 <a href="https://portal-index-857.com">857直播</a> 的原始地址当然可以，但导航页能聚合一些简短说明、常见用法和提醒，尤其适合刚接触的朋友。也方便你把它分享给家人或同事。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 这个页面会收集信息吗？</div>
+            <div class="faq-a">不会。这里只是一个静态入口页，没有统计脚本、没有第三方追踪。你可以把它当作一个书签的替代，只不过更清晰一些。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">❓ 直播内容有哪些类型？</div>
+            <div class="faq-a">以游戏、音乐、日常闲聊为主，具体内容取决于主播的安排。进入 <a href="https://portal-index-857.com">857直播</a> 后可以看到当前直播列表和分类。</div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <span>轻量导航 · 保持简单</span><br>
+        <span style="font-size:0.85rem; opacity:0.65;">更新于 2025 · 仅供页面导航说明使用</span>
+    </div>
+
+</div>
+</body>
+</html>
